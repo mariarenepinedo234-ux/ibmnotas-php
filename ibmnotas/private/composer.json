@@ -1,0 +1,17 @@
+{
+  "name": "ibmnotas/hostinger",
+  "description": "IBM Notas para alojamiento PHP",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo_mysql": "*",
+    "ext-sodium": "*",
+    "dompdf/dompdf": "^3.1",
+    "phpoffice/phpspreadsheet": "^5.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2.12"
+    }
+  }
+}

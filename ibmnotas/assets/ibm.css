@@ -1,0 +1,18 @@
+.btn-ibm {
+  background: var(--wine);
+  border: 1px solid var(--wine);
+  color: #fff;
+}
+.btn-ibm:hover, .btn-ibm:focus-visible { background: var(--wine-dark); color: #fff; }
+a { color: var(--wine); }
+.ibm-filter { max-width: 16rem; }
+.ibm-score { min-width: 5rem; }
+.ibm-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.content .card { background: var(--surface, #fff); border-color: var(--line); color: var(--ink); }
+.ibm-student-list { max-height: 16rem; overflow-y: auto; }
+.sidebar .nav-link { width: 100%; text-decoration: none; }
+.sidebar .nav-link:focus-visible, .sidebar .brand:focus-visible { outline: 2px solid var(--wine); outline-offset: 2px; }
+.sidebar-bottom form { margin: 0; }
+.content .table { --bs-table-color: var(--ink); --bs-table-bg: transparent; --bs-table-border-color: var(--line); }
+[data-theme=dark] .content .card { background: #17243a; }
+[data-theme=dark] .content .list-group-item { background: transparent; color: var(--ink); border-color: var(--line); }

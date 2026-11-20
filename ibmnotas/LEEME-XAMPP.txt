@@ -1,0 +1,50 @@
+IBM NOTAS EN XAMPP PARA WINDOWS
+===============================
+
+1. Extrae la carpeta ibmnotas en C:\xampp\htdocs. Debe quedar
+   C:\xampp\htdocs\ibmnotas\index.php. Si XAMPP está en otra unidad, usa
+   su carpeta htdocs. Conserva los archivos .htaccess.
+
+2. En el panel de XAMPP, inicia Apache y MySQL. En
+   http://localhost/phpmyadmin crea una base vacía llamada ibmnotas
+   con cotejamiento utf8mb4_bin. En esa base, abre Importar y elige
+   ibmnotas\private\database\schema.sql.
+
+3. Instala Composer desde https://getcomposer.org/download/ y selecciona
+   C:\xampp\php\php.exe si te pide la ruta de PHP. Abre una nueva ventana
+   de Símbolo del sistema (CMD) y ejecuta:
+
+     cd /d C:\xampp\htdocs\ibmnotas
+     composer --working-dir=private install --no-dev --prefer-dist
+     ..\..\php\php.exe private\bin\create-admin.php admin "Administracion IBM"
+
+   Escribe una clave de prueba de al menos 8 caracteres, distinta de
+   admin, y pulsa Enter. Hazlo una vez, luego de importar el esquema.
+
+4. Abre http://localhost/ibmnotas/ e ingresa con el usuario admin y tu
+   clave de prueba. El portal te pedirá cambiarla en el primer acceso.
+
+Configuración
+-------------
+ - Usa XAMPP de 64 bits con PHP 8.2. Bootstrap viene incluido. Composer instala las bibliotecas usando composer.lock.
+ - El paquete usa los valores típicos de XAMPP para MySQL local: host
+   127.0.0.1, puerto 3306, cuenta root y contraseña vacía. Si tu instalación
+   usa otros datos, ajusta private\config.php. Si Apache usa otro puerto
+   (por ejemplo 8080), abre http://localhost:8080/ibmnotas/.
+ - Si una extensión no está disponible, abre PHP (php.ini) desde el
+   panel de XAMPP, habilita pdo_mysql, sodium, mbstring, gd, zip y fileinfo
+   y reinicia Apache. También se necesitan DOM y las extensiones XML
+   incluidas habitualmente en PHP para Windows.
+ - Desde Símbolo del sistema puedes cargar el catálogo de materias:
+     cd /d C:\xampp\htdocs\ibmnotas
+     ..\..\php\php.exe private\bin\import-catalog.php private\catalogs\ceicom-2026.json --apply
+ - Verifica que http://localhost/ibmnotas/private/config.php responde
+   403. Este paquete está preparado para Apache local y acceso desde
+   la propia PC. Para Hostinger usa la edición de alojamiento.
+
+ACTUALIZAR UNA INSTALACIÓN DE PRUEBA
+-----------------------------------
+Si ya tienes instalada la edición XAMPP anterior, conserva tu base y tu
+configuración. Copia desde este ZIP solamente la carpeta assets, el archivo
+index.php y la carpeta private\app sobre sus equivalentes en htdocs\ibmnotas.
+No vuelvas a importar schema.sql. Recarga el navegador con Ctrl+F5.
